@@ -73,6 +73,7 @@ gust /var/www/html/ InnoDB utf8mb4
 # gust init db
 # setup account
 # KYTE_ACCOUNT_PASSWORD=$(LC_ALL=C tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c 13 ; echo)
+# echo $KYTE_ACCOUNT_PASSWORD > ~/kyte_password
 # gust admin Administrator user@example.com $KYTE_ACCOUNT_PASSWORD
 
 # reboot instance
