@@ -56,6 +56,11 @@ composer install
 # install kyte utility gust
 cd ~
 git clone https://github.com/keyqcloud/gust.git
+sudo ln -s ~/gust/gust.php /usr/local/bin/gust
+sudo ln -s /usr/local/bin/gust /usr/bin/gust
+
+#setup gust
+gust /var/www/html/ InnoDB utf8mb4
 
 # setup database
 
