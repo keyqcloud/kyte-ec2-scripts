@@ -15,6 +15,9 @@ sudo yum update -y
 sudo yum install -y httpd
 sudo yum install -y mod_ssl
 
+# install mysql client
+sudo yum install -y mysql
+
 # install git
 sudo yum install -y git
 
