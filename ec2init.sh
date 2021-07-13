@@ -53,6 +53,9 @@ find /var/www -type f -exec sudo chmod 0664 {} \;
 cd /var/www/html
 composer install
 
+# copy sample config file
+cp vendor/keyqcloud/kyte-php/sample-config.php config.php
+
 # install kyte utility gust
 cd ~
 git clone https://github.com/keyqcloud/gust.git
