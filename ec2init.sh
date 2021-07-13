@@ -62,8 +62,5 @@ sudo ln -s /usr/local/bin/gust /usr/bin/gust
 #setup gust
 gust /var/www/html/ InnoDB utf8mb4
 
-# setup database
-
-
 # reboot instance
 sudo reboot
