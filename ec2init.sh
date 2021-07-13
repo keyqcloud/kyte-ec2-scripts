@@ -30,7 +30,7 @@ sudo mv composer.phar /usr/local/bin/composer
 sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
 # allow overrides for /var/www/html
-sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/httpd/conf/httpd.conf
+sudo sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
 
 # enable http and set group ownership and membership
 sudo systemctl enable httpd
@@ -52,6 +52,10 @@ find /var/www -type f -exec sudo chmod 0664 {} \;
 # install dependencies
 cd /var/www/html
 composer install
+
+# install kyte utility gust
+cd ~
+git clone https://github.com/keyqcloud/gust.git
 
 # setup database
 
