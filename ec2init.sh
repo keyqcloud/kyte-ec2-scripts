@@ -54,7 +54,7 @@ cd /var/www/html
 composer install
 
 # copy sample config file
-cp vendor/keyqcloud/kyte-php/sample-config.php config.php
+cp /var/www/html/vendor/keyqcloud/kyte-php/sample-config.php /var/www/html/config.php
 
 # install kyte utility gust
 cd ~
