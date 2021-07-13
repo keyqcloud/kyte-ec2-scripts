@@ -21,8 +21,8 @@ sudo yum install -y mysql
 # install git
 sudo yum install -y git
 
-#8.0
-sudo amazon-linux-extras install -y php8.0
+# PHP 7.4
+sudo amazon-linux-extras install -y php7.4
 sudo yum clean metadata
 sudo yum install -y php php-mbstring php-simplexml php-gd php-mysqli php-opcache
 
