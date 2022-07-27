@@ -40,24 +40,9 @@ sudo systemctl enable httpd
 sudo usermod -a -G apache ec2-user
 sudo chown -R ec2-user:apache /var/www
 
-# install kyte boiler plate
-git clone https://github.com/keyqcloud/kyte.git /var/www/html
-
-# create base folders
-mkdir /var/www/html/app
-mkdir /var/www/html/app/models
-mkdir /var/www/html/app/controllers
-
 # set folder/file permissions
 sudo chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
 find /var/www -type f -exec sudo chmod 0664 {} \;
-
-# install dependencies
-cd /var/www/html
-composer install
-
-# copy sample config file
-cp /var/www/html/vendor/keyqcloud/kyte-php/sample-config.php /var/www/html/config.php
 
 # install kyte utility gust
 cd ~
@@ -68,10 +53,6 @@ sudo ln -s /usr/local/bin/gust /usr/bin/gust
 #setup gust
 gust /var/www/html/ InnoDB utf8mb4
 
-
-# TODO: consider setting up DB
-# gust init db
-# setup account
 KYTE_ACCOUNT_PASSWORD=$(LC_ALL=C tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c 13 ; echo)
 echo $KYTE_ACCOUNT_PASSWORD > ~/kyte_password
 # gust init account admin Administrator user@example.com $KYTE_ACCOUNT_PASSWORD
