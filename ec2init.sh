@@ -26,6 +26,9 @@ sudo amazon-linux-extras install -y php7.4
 sudo yum clean metadata
 sudo yum install -y php php-mbstring php-simplexml php-gd php-mysqli php-opcache php-bcmath
 
+# install required dependencies for Sodium encryption library
+sudo yum install -y php-pear php-devel gcc libsodium libsodium-devel
+
 # install composer
 cd ~
 sudo curl -sS https://getcomposer.org/installer | sudo php
@@ -34,6 +37,13 @@ sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
 # allow overrides for /var/www/html
 sudo sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
+
+#install sodium encryption package
+#https://paragonie.com/book/pecl-libsodium/read/00-intro.md
+pecl install libsodium
+
+# add sodium extension to php.d
+echo "extension=sodium.so" > /etc/php.d/sodium.ini
 
 # enable http and set group ownership and membership
 sudo systemctl enable httpd
