@@ -40,10 +40,10 @@ sudo sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride No
 
 #install sodium encryption package
 #https://paragonie.com/book/pecl-libsodium/read/00-intro.md
-pecl install libsodium
+sudo pecl install libsodium
 
 # add sodium extension to php.d
-echo "extension=sodium.so" > /etc/php.d/sodium.ini
+echo "extension=sodium.so" | sudo tee /etc/php.d/sodium.ini
 
 # enable http and set group ownership and membership
 sudo systemctl enable httpd
