@@ -9,25 +9,27 @@ sudo swapon -s
 echo '/swapfile swap swap defaults 0 0' | sudo tee -a /etc/fstab
 
 # install httpd, db connection, php, and git
-sudo yum update -y
+sudo dnf update -y
 
 # install httpd and mod ssl
-sudo yum install -y httpd
-sudo yum install -y mod_ssl
+sudo dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel php-mbstring php-simplexml php-gd php-opcache php-bcmath php-pear git
+sudo dnf install -y mod_ssl
 
 # install mysql client
-sudo yum install -y mysql
-
-# install git
-sudo yum install -y git
-
-# PHP 7.4
-sudo amazon-linux-extras install -y php7.4
-sudo yum clean metadata
-sudo yum install -y php php-mbstring php-simplexml php-gd php-mysqli php-opcache php-bcmath
+sudo dnf install -y mariadb105-server
 
 # install required dependencies for Sodium encryption library
-sudo yum install -y php-pear php-devel gcc libsodium libsodium-devel
+sudo dnf install -y gcc
+wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
+tar -xvzf LATEST.tar.gz
+cd libsodium-stable
+./configure
+make && make check
+#install sodium encryption package
+sudo make install
+sudo pecl install -f libsodium
+# add sodium extension to php.d
+echo "extension=sodium.so" | sudo tee /etc/php.d/sodium.ini
 
 # install composer
 cd ~
@@ -37,13 +39,6 @@ sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
 # allow overrides for /var/www/html
 sudo sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
-
-#install sodium encryption package
-#https://paragonie.com/book/pecl-libsodium/read/00-intro.md
-sudo pecl install libsodium
-
-# add sodium extension to php.d
-echo "extension=sodium.so" | sudo tee /etc/php.d/sodium.ini
 
 # enable http and set group ownership and membership
 sudo systemctl enable httpd
