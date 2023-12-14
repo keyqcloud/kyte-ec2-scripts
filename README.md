@@ -1,3 +1,8 @@
+# Setting up Kyte
+Run the following as part of the start up script or in your EC2 Amazon Linxu 2023 instance.
+
+`curl -sSL https://raw.githubusercontent.com/keyqcloud/kyte-ec2-init/main/ec2init.sh | bash`
+
 # OPcache
 
 Recommended settings to change or enable
