@@ -1,0 +1,5 @@
+[Unit]
+Description=Memory and CPU Usage Monitor
+
+[Service]
+ExecStart=/path/to/your/ec2-apm.sh
