@@ -33,13 +33,13 @@ sudo systemctl daemon-reload
 
 Enable and start timer for apm
 ```bash
-sudo systemctl enable memory_cpu_monitor.timer
-sudo systemctl start memory_cpu_monitor.timer
+sudo systemctl enable kyte_apm.timer
+sudo systemctl start kyte_apm.timer
 ```
 
 To check the status
 ```bash
-sudo systemctl status memory_cpu_monitor.timer
+sudo systemctl status kyte_apm.timer
 ```
 
 To test that the apm is working, install `stress`
