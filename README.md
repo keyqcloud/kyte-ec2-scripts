@@ -1,4 +1,8 @@
 # Setting up Kyte
+
+> [!IMPORTANT]
+> **Maintenance mode.** Kyte is in maintenance mode. Security fixes will continue through November 2027; no new features are planned. Existing installations remain supported during this period.
+
 Run the following as part of the start up script or in your EC2 Amazon Linxu 2023 instance.
 
 `curl -sSL https://raw.githubusercontent.com/keyqcloud/kyte-ec2-init/main/ec2init.sh | bash`
